@@ -1,7 +1,10 @@
-# Teste de Chow 
-# @author: Luiz Paulo 
+#' @title  Teste de Chow 
+#' @author Luiz Paulo Tavares Gonçalves 
 
-rm(list = ls()) # limpar a memória 
+rm(list = ls()) # Limpando a memória 
+
+# Definindo diretório de trabalho 
+# setwd("~/Área de Trabalho/Ciência de Dados: Machine Learning & Deep Learning/TCC/DBs")
 
 # importando dataset
 
@@ -28,9 +31,9 @@ rm(list = ls()) # limpar a memória
   
   bd_model = merge(coffe_raw, exports_raw, by = "ano") %>% 
              dplyr::select(ano, 
-                           log_price, 
+                           log_price, # price_quilo_mean_reis
                            log_acucar,
-                           log_export,
+                           log_export, # export_coffe_saca_mil
                            log_tax,
                            index)
 
@@ -59,13 +62,16 @@ rm(list = ls()) # limpar a memória
            guides(fill = guide_legend(nrow = 2, ncol = 3))
   
 residuo_model = lm(formula = log_price ~ log_export, data = bd_model)
-shapiro.test(residuo_model$residuals)  
+summary(residuo_model)
 
-  ggsave(filename = "regrecontrole.png", width = 9.0, 
-         height = 5, dpi = 1000, units = "in", device = "png")  
+shapiro.test(residuo_model$residuals)  # Sem distribuição normal 
+
+# getwd()
+  
+#ggsave(filename = "regrecontrole.png", width = 9.0, 
+#         height = 5, dpi = 1000, units = "in", device = "png")  
   
 # Câmbio 
-  
   
   ggplot(bd_model) +
     aes(x = ano, y = log_tax) +
@@ -74,15 +80,16 @@ shapiro.test(residuo_model$residuals)
          x = "", y = "Log mil-réis por libra")+
     theme_bw()
   
-# modelando - log-log 
+# modelo log-log completo incluindo taxa de câmbio -----------------------------------------------------
   
-    model_log <- parsnip::linear_reg() %>%
+model_complet_log <- parsnip::linear_reg() %>%
                           set_engine("lm") %>%
                           fit(log_export ~ log_price + log_acucar + log_tax, data = bd_model)
   
-performance::check_model(model_log)
+performance::check_model(model_complet_log)
 
-# Passando o modelo para uma tabela 
+# Passando o modelo para uma tabela ------------------------------------------------------------------------
+# Completo sem incluir taxa de câmbio 
 
 bd_model = bd_model %>% 
            dplyr::rename("Preço médio" = "log_price", 
@@ -90,10 +97,16 @@ bd_model = bd_model %>%
                          "Exportações de Açúcar" = "log_acucar", 
                          "Taxa de Câmbio" = "log_tax")
 
-model_completo = lm(formula = `Exportações de Café` ~ `Preço médio` + 
-                      `Taxa de Câmbio` + `Exportações de Açúcar`, data = bd_model)
-stargazer::stargazer(model_completo, type = "text", title = "Modelo Log-Log")   
+model_final = lm(formula = `Exportações de Café` ~ `Preço médio` + 
+                               `Exportações de Açúcar`, 
+                    data = bd_model)
 
+stargazer::stargazer(model_final, type = "text", title = "Modelo Log-Log")   
+shapiro.test(model_final$residuals) # Tem distribuição normal 
+
+# Perfomance model final 
+
+performance::check_model(model_final)
 # Testes de validação -----------------------------------------------------------------------------------------------------------------------------------
 
 test_model = function(model){
@@ -133,25 +146,26 @@ test_model = function(model){
 
 }
 
-test_model(model = model_completo)
+test_model(model = model_final)
 
 # Plots dos testes -----------------------------------------------------------------------------------------------------------------------------
-plot_test <- cbind(bd_model, Residual = model_completo$residuals) %>% 
+
+plot_test <- cbind(bd_model, Residual = model_final$residuals) %>% 
              dplyr::relocate(Residual, .after = ano)
 
 # Matriz de correlação // variáveis do modelo com o resíduos 
 
-    ggpairs(plot_test[, 2:6], lower = list(continuos = "smooth"))+
-           ggtitle("Correlação de Pearson")+
+    ggpairs(plot_test[, 2:5], lower = list(continuos = "smooth"))+
+           ggtitle("")+
            theme_bw()
 
-ggsave(filename = "checkcor.png", width = 8.0, 
+ggsave(filename = "check_cor_Pearson.png", width = 8.0, 
            height = 8, dpi = 1000, units = "in", device = "png")
     
 # Autocorrelação residual e heterocedasticidade     
     
-tsm::ac(model_completo$residuals, max.lag = 30) # Autocorrelação Residual
-plot(check_heteroscedasticity(model_completo)) # Plot. Heterocedasticidade 
+tsm::ac(model_final$residuals, max.lag = 30) # Autocorrelação Residual
+plot(check_heteroscedasticity(model_final)) # Plot. Heterocedasticidade 
 
 # Diferença entre os coeficientes ---------------------------------------------------------------
 
@@ -163,7 +177,7 @@ test_chow_step = function(db_model = as.data.frame(), start, breaking){
                        relocate(model, .after = ano)
     
     
-    model_step_complet =  lm(formula = `Exportações de Café` ~ `Preço médio` + `Taxa de Câmbio`+
+    model_step_complet =  lm(formula = `Exportações de Café` ~ `Preço médio` +
                                `Exportações de Açúcar`, data = chow_step)
     print("Modelo completo")
     sw_complet = shapiro.test(model_step_complet$residuals)
@@ -172,7 +186,7 @@ test_chow_step = function(db_model = as.data.frame(), start, breaking){
     step_one = chow_step %>% 
                filter(model == "step_one") 
     
-    model_step_one = lm(formula = `Exportações de Café` ~ `Preço médio` +  `Taxa de Câmbio`+
+    model_step_one = lm(formula = `Exportações de Café` ~ `Preço médio` +
                           `Exportações de Açúcar`, data = step_one)
     print("Step one model")
     sw_one = shapiro.test(model_step_one$residuals)
@@ -181,7 +195,7 @@ test_chow_step = function(db_model = as.data.frame(), start, breaking){
     step_two = chow_step %>% 
                filter(model == "step_two")
     
-    model_step_two = lm(formula = `Exportações de Café` ~ `Preço médio` +  `Taxa de Câmbio`+
+    model_step_two = lm(formula = `Exportações de Café` ~ `Preço médio` +
                           `Exportações de Açúcar`,  data = step_two)
     print("Step two model")
     sw_two = shapiro.test(model_step_two$residuals)
@@ -190,7 +204,7 @@ test_chow_step = function(db_model = as.data.frame(), start, breaking){
 # Resultado modelos 
     
 stargazer::stargazer(model_step_complet, model_step_one, model_step_two, 
-                      type = "latex", title ="Modelo Log-log")
+                      type = "latex", title = "Modelo Log-log")
 
 print("----------------------------------------------------------------")
     
@@ -219,8 +233,10 @@ plot_step_one = ggplot2::ggplot(data = step_one)+
                     x = `Preço médio`)+
                 geom_point(pch = 19, size = 2.5)+
                 geom_smooth(method = "lm", fill = "red", col = "black")+
-                labs(title = "Modelo 1821-1850", 
-                     subtitle = "P-valor do teste Shapiro-Wilk para os resíduos = 0.9266")+
+                labs(y = "Log das exportações de café", 
+                     x = "Log do preço médio do quilo de café",
+                     title = "Modelo 1821-1850", 
+                     subtitle = "P-valor do teste Shapiro-Wilk para os resíduos = 0.6894")+
                 theme_bw()
 
 plot_step_two = ggplot2::ggplot(data = step_two)+
@@ -228,8 +244,10 @@ plot_step_two = ggplot2::ggplot(data = step_two)+
                     x = `Preço médio`)+
                 geom_point(pch = 19, size = 2.5)+
                 geom_smooth(method = "lm", fill = "red", col = "black")+
-                labs(title = "Modelo 1851-1900", 
-                     subtitle = "P-valor do teste Shapiro-Wilk para os resíduos = 0.4087")+
+                labs(y = "Log das exportações de café", 
+                     x = "Log do preço médio do quilo de café",
+                     title = "Modelo 1851-1900", 
+                     subtitle = "P-valor do teste Shapiro-Wilk para os resíduos = 0.4371")+
                 theme_bw()
 
 plots_chow = cowplot::plot_grid(plot_step_one, 
@@ -251,20 +269,25 @@ ggsave(filename = "modelchow.png", width = 9.0,
  
 # Resultado dos modelos ----------------------------------------------------------------------------------------------
 
-results_model = test_chow_step(db_model = db_model, start = 1821, breaking = 1850)
+results_model = test_chow_step(db_model = db_model, 
+                               start = 1821, 
+                               breaking = 1850)
+
+# --------------------------------------------------------------------------------------------------------
 
 check_model(results_model[[1]]) # complet 
 
-ggsave(filename = "checkmodel.png", width = 8.0, 
+ggsave(filename = "check_model_complet.png", width = 8.0, 
        height = 8, dpi = 1000, units = "in", device = "png")
 
 check_model(results_model[[2]]) # step_one
-ggsave(filename = "checkmodelone.png", width = 8.0, 
+
+ggsave(filename = "check_modelo_1821-1850.png", width = 8.0, 
        height = 8, dpi = 1000, units = "in", device = "png")
 
 check_model(results_model[[3]]) # step_two 
 
-ggsave(filename = "checkmodeltwo.png", width = 8.0, 
+ggsave(filename = "check_model_1850-1900.png", width = 8.0, 
        height = 8, dpi = 1000, units = "in", device = "png")
 
 
@@ -273,19 +296,24 @@ ggsave(filename = "checkmodeltwo.png", width = 8.0,
     point_break = bd_model %>% 
                   dplyr::filter(ano >= 1821 & ano < 1851) %>% 
                   count() %>% as.numeric()
-print(point_break)
+
+print(point_break) # Ponto de quebra - em 1851
+
 bd_model %>% slice(point_break)
 
     if(!is.null(point_break)){
-      test_chow = sctest(`Exportações de Café` ~ `Preço médio` + `Taxa de Câmbio`+
-                           `Exportações de Açúcar` , 
-                         type = "Chow", point = point_break, data = bd_model)
+      test_chow = sctest(`Exportações de Café` ~ `Preço médio` +
+                          `Exportações de Açúcar` , 
+                          type = "Chow", 
+                          point = point_break, 
+                          data = bd_model)
+      
       print(test_chow)
       
     }
 
 table_chow = data.frame("Estatística F" = c(test_chow$statistic), 
-                        "P_valor" = "1.232e-12", 
+                        "P_valor" = "2.2e-16", 
                         "Point" = c(point_break)) %>% 
               dplyr::rename("Estatística F" = "Estatística.F", 
                             "P-valor" = "P_valor")

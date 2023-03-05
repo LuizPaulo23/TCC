@@ -16,6 +16,9 @@ graphics.off()
  }
 
 # Packages Utilizados 
+    
+#install.packages("remotes")
+#remotes::install_github("KevinKotze/tsm")    
 
 packages <- c("tidyverse",  # manipulation dataset
               "DataExplorer", # EDA
@@ -30,7 +33,7 @@ packages <- c("tidyverse",  # manipulation dataset
               "stargazer", # Tabela modelo 
               "urca", # Testes de raiz unitária
               "forecast", # Séries temporais 
-              #"tsm", # teste de raiz unitária 
+              "tsm", # teste de raiz unitária 
               "vars", # teste de raiz unitária  
               "strucchange", # Teste de Chow
               "performance", # Validação do modelo 
@@ -45,7 +48,4 @@ packages <- c("tidyverse",  # manipulation dataset
 
 # Ctrl+Alt+B  
 
-# Package: tsm -----------------------------------------------------------
-# O pacote tsm está disponível no GitHub 
-#devtools::install_github("KevinKotze/tsm")
 

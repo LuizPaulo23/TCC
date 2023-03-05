@@ -1,6 +1,11 @@
-# Plot - Demanda e oferta 
+#' @title Plot - Demanda e oferta 
+#' @author Luiz Paulo Tavares Gonçalves 
 
 rm(list = ls()) # Limpando a memória 
+
+# Definindo diretório de trabalho 
+# setwd("~/Área de Trabalho/Ciência de Dados: Machine Learning & Deep Learning/TCC/DBs")
+# import dataset 
 
 # Custom data
 

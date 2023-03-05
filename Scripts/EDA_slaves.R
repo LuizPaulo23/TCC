@@ -1,6 +1,10 @@
-# EDA - desembarque de escravos 
+#' @title  Desembarque de escravos 
+#' @author Luiz Paulo Tavares Gonçalves 
 
-rm(list = ls()) # limpando a memória 
+rm(list = ls()) # Limpando a memória 
+
+# Definindo diretório de trabalho 
+# setwd("~/Área de Trabalho/Ciência de Dados: Machine Learning & Deep Learning/TCC/DBs")
 
 # import dataset 
 slave_raw = readxl::read_excel("data_slave.xls")
@@ -18,11 +22,9 @@ slave_raw = readxl::read_excel("data_slave.xls")
                               time = as.numeric(time))
 
 db_slave %>% glimpse()
+
 # Visualizando 
     
-
-
-
     db_slave %>%
       filter(time >= 1800L & time <= 1851L) %>%
       ggplot() +

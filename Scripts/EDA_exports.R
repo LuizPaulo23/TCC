@@ -1,4 +1,4 @@
-# Análise exploratória: Exportações 
+#' @title  Análise exploratória: Exportações 
 #' @author Luiz Paulo Tavares Gonçalves 
 
 rm(list = ls()) # Limpando a memória 

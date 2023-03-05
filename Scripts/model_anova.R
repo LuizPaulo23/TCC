@@ -1,15 +1,25 @@
-# Teste Anova - comparando a médias entre as quebras - Exportações 
+#' @title Teste Anova - comparando a médias entre as quebras - Exportações 
 # Esse Script é depedente da função (test_chow_step) desenvolvida no script test_chow 
-# Chamando a função 
+#' @author Luiz Paulo Tavares Gonçalves 
+
+rm(list = ls()) # Limpando a memória 
+
+# Definindo diretório de trabalho 
+# setwd("~/Área de Trabalho/Ciência de Dados: Machine Learning & Deep Learning/TCC/DBs")
+# import dataset 
+
+
 results_model = test_chow_step(db_model = db_model, start = 1821, breaking = 1850)
 
 # Filtrando apenas o dataset limpo e organizando 
-    anova_raw = results_model[[4]] %>% 
+  
+  anova_raw = results_model[[4]] %>% 
                 mutate(points_break = case_when(model == "step_one" ~ "1821-1850", 
                                           model == "step_two" ~ "1851-1900"))  
 class(anova_raw)
 
 # Modelando: ANOVA 
+
 model_anova = lm(formula = `Exportações de Café` ~ factor(points_break), data = anova_raw)
 
 stargazer::stargazer(model_anova, type = "text", 
