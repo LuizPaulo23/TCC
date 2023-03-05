@@ -1,4 +1,5 @@
 # Dependência de reprodutividade
+#' @author Luiz Paulo Tavares Gonçalves 
 # Packages/bibliotecas usadas 
 
 # Função para instalação/liberação ------------------------------------------------------
@@ -6,7 +7,6 @@ rm(list = ls())
 graphics.off()
   
 # Set 
-setwd("~/Área de Trabalho/Ciência de Dados: Machine Learning & Deep Learning/Monografia/DBs")
 
     library.packages <- function(pkg){
                         new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
@@ -25,12 +25,12 @@ packages <- c("tidyverse",  # manipulation dataset
               "RColorBrewer", # Paleta
               "cowplot", # maps
               "broom", # coeficientes
-              "TSstudio", # plotes serie temporal 
-              "econocharts", # plot demanda/oferta
+              #"TSstudio", # plotes serie temporal 
+              #"econocharts", # plot demanda/oferta
               "stargazer", # Tabela modelo 
               "urca", # Testes de raiz unitária
               "forecast", # Séries temporais 
-              "tsm", # teste de raiz unitária 
+              #"tsm", # teste de raiz unitária 
               "vars", # teste de raiz unitária  
               "strucchange", # Teste de Chow
               "performance", # Validação do modelo 
@@ -41,13 +41,7 @@ packages <- c("tidyverse",  # manipulation dataset
 
 # Liberando 
 
-    if(!is.null(packages)){
       library.packages(packages)
-    } else {
-      print("ERRO: vetor nulo")
-    }
-
-
 
 # Ctrl+Alt+B  
 
