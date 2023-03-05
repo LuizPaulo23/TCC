@@ -1,0 +1,110 @@
+---
+title: "Equações monografia"
+author: "Luiz Paulo T. Gonçalves"
+date: "29/10/2022"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Correlação de Pearson 
+
+\begin{equation}
+r = \frac{\sum_{i = 1}^n (x_{i} - \overline{x})(y_{i}-\overline{y})}{\sqrt{\sum_{i=1}^n (x_{i}-\overline{x})^2} \sqrt{\sum_{i=1}^n(y_{i}-\overline{y})^2}}
+\end{equation}
+# Compactada 
+
+\begin{equation}
+r = \frac{Cov(X,Y)}{\sqrt{Var(x), Var(y)}}
+\end{equation}
+
+
+\begin{equation}
+r = \frac{Cov(X,Y)}{\sigma(x) \sigma(y)}
+\end{equation}
+
+
+\begin{equation}
+rk = \frac{Cov(x_{t}, x_{t-k})}{\sqrt{Var(x_{t}, x_{t-k})}} = \frac{Cov(x_{t}, x_{t-k})}{Var(x_{t})} = \frac{\gamma_{k}}{\gamma_{0}}
+\end{equation}
+
+####
+####
+# Autocorrelação 
+
+\begin{equation}
+\hat{}
+\end{equation}
+
+$$
+\hat{r_k} = \frac{\sum_{t =k+1}^T (x_{t} - \overline{x})(x_{t-k}-\overline{x})}{\sum_{t=1}^T (x_{t}-\overline{x})²}
+$$
+
+###
+### 
+
+## Teste De CHow 
+
+$$
+F = \frac{(SQR_{R}-SQR_{SR})/k}{(SQR_{SR})/(n_{2}+n_{3}-2k)} 
+$$
+$$
+~ F_{[k,(n_{1}+n_{2}-2k)]}
+$$
+
+##
+##
+## Pressupoe 
+$$
+u_{2t} \sim N(0, \sigma^2) ~~e~~ u_{3t} \sim N(0,\sigma^2)
+$$
+
+## MOdelo log-log 
+
+$$
+lnY_{i} = \alpha + \beta_{2}lnP_{i} +\beta_{3}lnC_{i} + \beta_{4}lnS_{i} + \mu_{i}
+$$
+
+
+$$
+lnY_{i} = \alpha + \beta_{2}lnP_{i} +\beta_{3}lnC_{i} + \beta_{4}lnS_{i} + \mu_{i}
+$$
+
+$$
+Período ~~de~~1821~~a~~ 1900: lnY_{t} = \alpha_{1}+ \alpha_{2}lnP_{t}+ \alpha_{3} lnC_{t} + \alpha_{4}lnS_{t} + \mu_{t} 
+$$
+
+$$
+Período ~~de~~1821~~a~~ 1850: lnY_{t} = \lambda_{1}+ \lambda_{2}lnP_{t}+ \lambda_{3} lnC_{t} + \lambda_{4}lnS_{t} + \mu_{1t} 
+$$
+
+$$
+Período ~~de~~1851~~a~~ 1900: lnY_{t} = \gamma_{1}+ \gamma_{2}lnP_{t}+ \gamma_{3} lnC_{t} + \gamma_{4}lnS_{t} + \mu_{2t} 
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+###
+
+
+
+
+
+
+
+
+
