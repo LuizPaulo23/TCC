@@ -165,7 +165,7 @@ ggsave(filename = "check_cor_Pearson.png", width = 8.0,
 # Autocorrelação residual e heterocedasticidade     
     
 tsm::ac(model_final$residuals, max.lag = 30) # Autocorrelação Residual
-plot(check_heteroscedasticity(model_final)) # Plot. Heterocedasticidade 
+# plot(check_heteroscedasticity(model_final)) # Plot. Heterocedasticidade 
 
 # Diferença entre os coeficientes ---------------------------------------------------------------
 
