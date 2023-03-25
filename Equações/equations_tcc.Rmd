@@ -3,9 +3,9 @@ title: "Equações monografia"
 author: "Luiz Paulo T. Gonçalves"
 date: "29/10/2022"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -67,25 +67,27 @@ $$
 ## MOdelo log-log 
 
 $$
-lnY_{i} = \alpha + \beta_{2}lnP_{i} +\beta_{3}lnC_{i} + \beta_{4}lnS_{i} + \mu_{i}
+lnY_{i} = \alpha + \beta_{2}lnP_{i} + \beta_{3}lnS_{i} + \mu_{i}
 $$
 
 
 $$
-lnY_{i} = \alpha + \beta_{2}lnP_{i} +\beta_{3}lnC_{i} + \beta_{4}lnS_{i} + \mu_{i}
+lnY_{i} = \alpha + \beta_{2}lnP_{i} + \beta_{3}lnS_{i} + \mu_{i}
 $$
 
 $$
-Período ~~de~~1821~~a~~ 1900: lnY_{t} = \alpha_{1}+ \alpha_{2}lnP_{t}+ \alpha_{3} lnC_{t} + \alpha_{4}lnS_{t} + \mu_{t} 
+Período ~~de~~1821~~a~~ 1900: lnY_{t} = \alpha_{1}+ \alpha_{2}lnP_{t}+ \alpha_{3}lnS_{t} + \mu_{t} 
 $$
 
 $$
-Período ~~de~~1821~~a~~ 1850: lnY_{t} = \lambda_{1}+ \lambda_{2}lnP_{t}+ \lambda_{3} lnC_{t} + \lambda_{4}lnS_{t} + \mu_{1t} 
+Período ~~de~~1821~~a~~ 1850: lnY_{t} = \lambda_{1}+ \lambda_{2}lnP_{t}+ \lambda_{3}lnS_{t} + \mu_{1t} 
 $$
 
+
 $$
-Período ~~de~~1851~~a~~ 1900: lnY_{t} = \gamma_{1}+ \gamma_{2}lnP_{t}+ \gamma_{3} lnC_{t} + \gamma_{4}lnS_{t} + \mu_{2t} 
+Período ~~de~~1851~~a~~ 1900: lnY_{t} = \gamma_{1}+ \gamma_{2}lnP_{t}+ \gamma_{3}lnS_{t} + \mu_{2t} 
 $$
+
 
 
 
