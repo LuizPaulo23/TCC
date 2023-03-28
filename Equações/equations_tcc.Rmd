@@ -3,9 +3,9 @@ title: "Equações monografia"
 author: "Luiz Paulo T. Gonçalves"
 date: "29/10/2022"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}

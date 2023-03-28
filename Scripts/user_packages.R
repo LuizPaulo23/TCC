@@ -15,13 +15,15 @@ graphics.off()
                           sapply(pkg, require, character.only = T)
  }
 
-# Packages Utilizados 
     
+# ATENÇÃO: INSTALE O TSM via github         
 #install.packages("remotes")
 #remotes::install_github("KevinKotze/tsm")    
 
+# Packages Utilizados    
+    
 packages <- c("tidyverse",  # manipulation dataset
-              "DataExplorer", # EDA
+              #"DataExplorer", # EDA
               "geobr", # maps 
               "knitr", # Tables
               "ggspatial", # maps
@@ -34,7 +36,7 @@ packages <- c("tidyverse",  # manipulation dataset
               "urca", # Testes de raiz unitária
               "forecast", # Séries temporais 
               "tsm", # teste de raiz unitária 
-              "vars", # teste de raiz unitária  
+              #"vars", # teste de raiz unitária  
               "strucchange", # Teste de Chow
               "performance", # Validação do modelo 
               "tidymodels", # modelagem 
@@ -44,8 +46,8 @@ packages <- c("tidyverse",  # manipulation dataset
 
 # Liberando 
 
-      library.packages(packages)
 
 # Ctrl+Alt+B  
+#library(GGally)
 
-
+      
