@@ -46,6 +46,7 @@ packages <- c("tidyverse",  # manipulation dataset
 
 # Liberando 
 
+library.packages(packages)
 
 # Ctrl+Alt+B  
 #library(GGally)
