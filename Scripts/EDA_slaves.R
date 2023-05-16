@@ -4,9 +4,10 @@
 rm(list = ls()) # Limpando a memória 
 
 # Definindo diretório de trabalho 
-# setwd("~/Área de Trabalho/Ciência de Dados: Machine Learning & Deep Learning/TCC/DBs")
+# setwd("~/Github/Projetos/TCC/DBs")
 
 # import dataset 
+
 slave_raw = readxl::read_excel("data_slave.xls")
 
 # Organizando e limpando o dataset 

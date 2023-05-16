@@ -41,12 +41,13 @@ packages <- c("tidyverse",  # manipulation dataset
               "performance", # Validação do modelo 
               "tidymodels", # modelagem 
               "GGally", # matriz correlação 
-              "nortest", 
+              #"nortest", 
               "lmtest")
 
 # Liberando 
 
 library.packages(packages)
+library(tidyverse)
 
 # Ctrl+Alt+B  
 #library(GGally)
