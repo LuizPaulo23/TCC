@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+
+\title{table}
+\author{luizpauloueg@gmail.com}
+\date{November 2022}
+
+\begin{document}
+\begin{table}
+\centering
+\begin{tabular}{p{5cm} >{\centering\arraybackslash}p{2cm} >{\centering\arraybackslash}p{2cm} >{\centering\arraybackslash}p{2cm} >{\centering\arraybackslash}p{2cm}}
+\multicolumn{4}{c}{Tabela 2 - Teste de normalidade e homocedasticidade} \\
+\hline
+Testes                      & \multicolumn{1}{c}{Modelo I}   & \multicolumn{1}{c}{Modelo II}  & \multicolumn{1}{c}{Modelo III}    \\
+\hline
+p-valor Shapiro-Wilk        & 0.2329     & 0.6994     & 0.4371        \\
+p-valor Kolmogorov-Smirnov  & 0.7452     & 0.1904     & 0.4603        \\
+p-valor Anderson-Darling    & 0.3492     & 0.3485     & 0.4105        \\
+p-valor Breusch-Pagan       & 4.511e-06  & 0.6288     & 0.2007         \\
+\hline
+\end{tabular}
+\end{table}
+\end{document}
+
