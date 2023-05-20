@@ -10,6 +10,10 @@
 
 rm(list = ls())
 
+library(tidyverse)
+library(lmtest)
+require(nortest)
+
 setwd("~/Github/Projetos/TCC/DBs")
 
 # Importando e renomeando as colunas 
@@ -48,9 +52,6 @@ shapiro.test(model_step_complet$residuals)
 shapiro.test(model_step_dois$residuals)
 shapiro.test(model_step_tres$residuals)
 
-# install.packages("nortest")
-require(nortest)
-
 # Kolmogorov-Smirnov
 lillie.test(model_step_complet$residuals)
 lillie.test(model_step_dois$residuals)
@@ -63,10 +64,13 @@ ad.test(model_step_tres$residuals)
 
 # Presença de heterocedasticidade
 # studentized Breusch-Pagan test
-library(lmtest)
 
 bptest(model_step_complet)
 bptest(model_step_dois)
 bptest(model_step_tres)
 
 # durbinWatsonTest(model_step_complet)
+
+
+
+
