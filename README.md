@@ -1,5 +1,14 @@
 # O fim do tráfico de escravos e a quebra estrutural nas exportações de café: uma análise econométrica
 
-[....] O presente trabalho busca explorar historicamente a transição do trabalho escravo para o trabalho assalariado e, como ponto axial, analisar econometricamente as exportações de café dentro de um determinado recorte temporal. Assim, inserindo-se metodologicamente entre a historiografia econômica e a modelagem estatística, busca-se testar a hipótese de quebras estruturais nas exportações de café no período datado como a extinção do tráfico transatlântico, isto é, no “ponto de pré-transição” para o trabalho assalariado em larga escala. A pergunta que o trabalho busca responder é, portanto, a seguinte: ocorreu em meados de 1850, período marcado com o fim da importação de mão escrava, quebra estrutural nas exportações de café? 
+**RESUMO:** O trabalho em tela aborda a dinâmica macroecômica do Brasil Império.
+Utilizando uma abordagem que combina historiografia econômica e modelagem
+econométrica, o estudo busca investigar a existência de quebra estrutural nas exportações de
+café em meados de 1850, coincidindo com a implementação da Lei Eusébio de Queiroz que
+pôs fim ao tráfico transatlântico de escravos. A análise dos dados e as inferências obtidas
+suguerem evidências estatisticamente significativas que suportam a hipótese de ocorrência de
+quebra estrutural no período em estudo. Os resultados estão em consonância com a literatura
+existente sobre o tema, reforçando a compreensão de que as mudanças no sistema de trabalho,
+como a transição do trabalho escravo para o trabalho assalariado, impactaram de forma
+significativa o processo produtivo do Brasil.
 
-O palco central de exposição e análise navega entre os períodos de 1822 a 1900 – com destaque para o período da independência até a extinção do tráfico de escravos com a Lei Eusébio de Queiroz (1850). Período marcado por um ritmo de expansão da pauta de exportação, com perda acentuada da participação do açúcar nas exportações e com o crescimento exponencial do café como principal produto de exportação.  
+**Palavras-chave:** quebra estrutural, exportações, café.
