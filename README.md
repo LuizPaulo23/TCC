@@ -12,3 +12,6 @@ como a transição do trabalho escravo para o trabalho assalariado, impactaram d
 significativa o processo produtivo do Brasil.
 
 **Palavras-chave:** quebra estrutural, exportações, café.
+
+
+![Slide_01](Imagens_Slides/Slides/02.png)
