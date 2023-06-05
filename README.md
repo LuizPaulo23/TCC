@@ -1,4 +1,4 @@
-# O fim do tráfico de escravos e a quebra estrutural nas exportações de café: uma análise econométrica
+![Slide_01](Imagens_Slides/Slides/01.png)
 
 **RESUMO:** O trabalho em tela aborda a dinâmica macroecômica do Brasil Império.
 Utilizando uma abordagem que combina historiografia econômica e modelagem
