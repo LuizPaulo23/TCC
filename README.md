@@ -24,3 +24,5 @@ significativa o processo produtivo do Brasil.
 ![Slide_01](Imagens_Slides/Slides/09.png)
 ![Slide_01](Imagens_Slides/Slides/10.png)
 ![Slide_01](Imagens_Slides/Slides/11.png)
+![Slide_01](Imagens_Slides/Slides/12.png)
+![Slide_01](Imagens_Slides/Slides/13.png)
